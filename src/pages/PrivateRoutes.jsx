@@ -1,11 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { useSelector } from 'react-redux'
+import { Navigate, Outlet } from 'react-router-dom'
 
 
 export const PrivateRoutes = () => {
     
-    const isPublic = true
+    const trainer = useSelector( ( state ) => state.trainer )
 
-    if ( isPublic ) {        
+    if ( trainer.name ) {        
         return (
             <Outlet />
         )

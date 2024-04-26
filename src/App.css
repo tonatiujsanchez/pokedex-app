@@ -9,7 +9,14 @@
 	--content-color: #FFF;
 	--title-color: rgba(254, 25, 54, 1);
 	--text-color: rgba(48, 47, 47, 1);
+	--text-color-light: rgba(159, 159, 159, 1);
+	--black-color: #000;
+	--red-color: rgba(221, 26, 26, 1);
 
+	/*========== Sombras ==========*/
+	--shadow-primary: 0 0.3rem 0.3rem rgb(0,0,0,0.1); 
+
+	
 
 	/* --text-color-light: #A6A6A6;
 	--container-color: #F8FAFC;
@@ -22,7 +29,7 @@
 	--border-primary: 0.1rem solid var(--gray-primary-color);
 	
 	/*========== Sombras ==========*/
-	--shadow-primary: 0 0.5rem 1rem var(--gray-primary-color); 
+	/* --shadow-primary: 0 0.5rem 1rem rgb(197, 197, 197);  */
 	--shadow-primary-top: 0 -0.1rem 0.6rem var(--gray-primary-color); 
 }
 
@@ -57,9 +64,14 @@ body {
 	transition: background-color 0.3s;
 }
 
-h1,h2,h3,h4,h5,h6,p{
+h1,h2,h3,h4,h5,h6{
 	margin: 0;
 	color: var(--title-color);
+}
+
+p{
+	margin: 0;
+	color: var(--text-color);
 }
 
 ul, figure {
