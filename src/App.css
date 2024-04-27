@@ -1,8 +1,6 @@
 :root {
 	/*========== Fuentes ==========*/
 	--font-primary: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	/* 300, 400, 500, 700 */
-
 
 	/*========== Colores ==========*/
 	--body-color: #F8FAFC;
@@ -16,21 +14,6 @@
 	/*========== Sombras ==========*/
 	--shadow-primary: 0 0.3rem 0.3rem rgb(0,0,0,0.1); 
 
-	
-
-	/* --text-color-light: #A6A6A6;
-	--container-color: #F8FAFC;
-	--gray-primary-color: #DBDCDF;
-	--black-primary-color: #2B2B2B;
-	--white-primary-color: #F8FAFC; */
-
-
-	/*========== Bordes ==========*/
-	--border-primary: 0.1rem solid var(--gray-primary-color);
-	
-	/*========== Sombras ==========*/
-	/* --shadow-primary: 0 0.5rem 1rem rgb(197, 197, 197);  */
-	--shadow-primary-top: 0 -0.1rem 0.6rem var(--gray-primary-color); 
 }
 
 html {
@@ -90,7 +73,7 @@ a {
 }
 
 p {
-  	line-height: 1.7;
+  	line-height: 1.4;
 }
 
 button {

@@ -1,0 +1,41 @@
+.input-form {
+    display: flex;
+    width: 100%;
+}
+
+.input-form__input {
+    flex: 1;
+    padding: 1.5rem 1.5rem;
+    font-size: 1.6rem;
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.input-form__input::placeholder {
+    font-size: 1.6rem;
+    color: var(--text-color-light);
+}
+
+.input-form__submit {
+    background-color: var(--red-color);
+    color: var(--content-color);
+    font-size: 1.6rem;
+    padding: 1.4rem 2rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.input-form__submit:hover {
+    background-color: var(--title-color);
+    box-shadow: var(--shadow-primary);
+}
+
+.input-form__submit:active {
+    transform: scale(0.98);
+}
+
+@media (min-width: 768px){
+    .input-form__submit {
+        padding-inline: 4rem;
+    }
+}

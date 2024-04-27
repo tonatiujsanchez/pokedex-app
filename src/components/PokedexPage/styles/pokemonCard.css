@@ -1,0 +1,74 @@
+.pokemon {
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    max-width: 26rem;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.pokemon__content {
+    background-color: var(--content-color);
+}
+
+/* HEADER */
+.pokemon__figure-content {
+    padding-block-start: 2rem;
+    
+}
+
+.pokemon__header {
+    padding-block-end: 1rem;
+    border-block-end: 0.1rem solid var(--text-color-light);
+}
+
+.pokemon__figure{
+    max-width: 14rem;
+    margin-inline: auto;
+}
+
+.pokemon__figure img{
+    aspect-ratio: 1;
+}
+
+.pokemon__name {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.pokemon__types {
+    text-align: center;
+}
+
+.pokemon__types-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.pokemon__types-title {
+    color: var(--text-color-light);
+    font-size: 1.1rem;
+}
+
+/* BODY - UL */
+.pokemon__list {
+    padding: 1rem;
+}
+
+.pokemon__skills {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    gap: 2rem;
+}
+
+.pokemon__skill-title {
+    color: var(--text-color-light);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.pokemon__skill {
+    font-weight: 600;
+}
