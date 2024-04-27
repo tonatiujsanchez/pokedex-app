@@ -1,60 +1,121 @@
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { setHasError, setIsLoading, setPokemons } from '../store/slices/pokemon.slice'
+import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType } from '../store/slices/pokemon.slice'
+import { useEffect } from 'react'
+import { getPokemonsPerPage } from '../services'
 
-export const usePokemons = ({ page=1, pageSize=16 }) => {
+export const usePokemons = () => {
     
     const dispath = useDispatch()
-    const { pokemons, isLoading, hasError } = useSelector(( store => store.pokemon ))
+    const {
+        allPokemons,
+        pokemonsByType,
+        pokemons, 
+        isLoading, 
+        hasError, 
+        types, 
+        isLoadingTypes, 
+        hasErrorTypes, 
+        typeSelectedUrl,
+        page,
+        pageSize,
+    } = useSelector(( store => store.pokemon ))
+
+    useEffect(() => {
+        getPokemons()
+    },[])
 
 
     useEffect(()=>{
-        
-        getPokemonUrls()
+        if( typeSelectedUrl ){
+            getPokemonsByType()
+        }
+    },[typeSelectedUrl])
 
-    },[page, pageSize])
 
-    const getPokemonUrls = async() => {
+    useEffect(() => {
+
+        let pokemons = {}
+        if( pokemonsByType.length > 0 ){
+            pokemons = {
+                count      : pokemonsByType.length,
+                currentPage: page,
+                totalPages : Math.ceil( pokemonsByType.length / Number(pageSize) ),
+                data: getPokemonsPerPage( pokemonsByType )
+            }
+        }else {
+            pokemons = {
+                count      : allPokemons.length,
+                currentPage: page,
+                totalPages : Math.ceil( allPokemons.length / Number(pageSize) ),
+                data: getPokemonsPerPage( allPokemons )
+            }
+        }
+
+        dispath( setPokemons(pokemons ))
+
+    },[ allPokemons, pokemonsByType, page, pageSize])
+
+    const getPokemons = async() => {
         dispath( setIsLoading(true) )
         try {
-            const url = `https://pokeapi.co/api/v2/pokemon?limit=${ pageSize }`
+            const url = `https://pokeapi.co/api/v2/pokemon?limit=1302`
             const { data:pokemonUrls } = await axios.get( url )
 
-            const pokemonPromises = pokemonUrls.results.map( pokeUrl => getPokemon( pokeUrl.url ))
-            const data = await Promise.all( pokemonPromises )
-
-            const pokemons = {
-                count      : pokemonUrls.count,
-                nextUrl    : pokemonUrls.next,
-                previousUrl: pokemonUrls.previus,
-                currentPage: page,
-                totalPages : Math.ceil( pokemonUrls.count / Number(pageSize) ),
-                data
-            }
-
-            dispath( setPokemons(pokemons ))
+            dispath( setAllPokemons(pokemonUrls.results) )
             dispath( setHasError(null) )
             
         } catch (error) {
-            const { msg } = error.response.data
-            dispath( setHasError(msg) )  
+            dispath( setHasError(error.response.data) )  
         }finally {
             dispath( setIsLoading( false ) )
         }
     }
 
 
-    const getPokemon = async( pokemonUrl ) => {
+    const getPokemonsByType = async() => {
+        dispath( setIsLoading( true ) )
         try {
-            const { data } = await axios.get( pokemonUrl )
-            return data
+            const { data } = await axios.get( typeSelectedUrl )
+            const pokemonUrls = data.pokemon.map( poke => poke.pokemon )
+
+            dispath( setPokemonsByType(pokemonUrls) )
+            dispath( setHasError(null) )
 
         } catch (error) {
-            return error
-        } 
+            dispath( setHasError(error.response.data) )  
+        }finally {
+            dispath( setIsLoading( false ) )
+        }
+    }
+
+    const getTypes = async() => {
+        dispath( setIsLoadingTypes(true) )
+        try {
+            const url = `https://pokeapi.co/api/v2/type`
+            const { data } = await axios.get(url)
+            dispath( setTypes(data.results) )
+        } catch(error) {
+            dispath( setHasErrorTypes(error.response.data) ) 
+        } finally {
+            dispath( setIsLoadingTypes(false) )
+        }
+    }
+
+    const onChangeType = (typeUrl) => {
+        dispath( setTypeSelected(typeUrl) )
     }
 
 
-    return { pokemons, isLoading, hasError }
+    return { 
+        pokemons,
+        isLoading, 
+        hasError, 
+        getTypes, 
+        types, 
+        isLoadingTypes, 
+        hasErrorTypes, 
+        typeSelectedUrl, 
+        onChangeType,
+    }
 }

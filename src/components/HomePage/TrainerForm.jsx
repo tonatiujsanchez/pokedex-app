@@ -9,8 +9,7 @@ export const TrainerForm = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const handleSubmit = ( value ) => {
-        event.preventDefault()        
+    const handleSubmit = ( value ) => {        
         if ( value === '' ) {
             return console.log('Ingresa tu nombre para comenzar')
         }

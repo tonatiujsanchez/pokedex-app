@@ -1,0 +1,13 @@
+.pokedex-filter {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding-block: 3rem;
+}
+
+@media (min-width: 760px){
+    .pokedex-filter {
+        flex-wrap: nowrap;
+    }
+}

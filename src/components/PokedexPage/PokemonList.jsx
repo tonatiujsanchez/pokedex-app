@@ -4,7 +4,7 @@ import './styles/pokemonList.css'
 
 export const PokemonList = () => {
 
-    const { isLoading, hasError, pokemons } = usePokemons({ page: 1, pageSize: 16 })
+    const { isLoading, hasError, pokemons } = usePokemons()
 
     if( isLoading ){
         return (
@@ -23,8 +23,8 @@ export const PokemonList = () => {
             {
                 pokemons.data.map( pokemon =>(
                     <PokemonCard
-                        key={ pokemon.id }
-                        pokemon={ pokemon }
+                        key={ pokemon.url }
+                        pokemonUrl={ pokemon.url }
                     />
                 ))
             }

@@ -7,7 +7,7 @@
 }
 
 .pokemon__content {
-    background-color: var(--content-color);
+    background-color: var(--card-color);
 }
 
 /* HEADER */

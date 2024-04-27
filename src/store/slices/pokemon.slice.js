@@ -3,18 +3,30 @@ import { createSlice } from '@reduxjs/toolkit'
 export const pokemonSlice = createSlice({
     name: 'pokemon',
     initialState: {
+        allPokemons: [],
+        pokemonsByType: [],
         pokemons: {
             count: 0,
-            nextUrl: null,
-            previousUrl: null,
             currentPage: 0,
             totalPages: 0,
             data: []
         },
         isLoading: true,
-        hasError: null
+        hasError: null,
+        types: [],
+        isLoadingTypes: true,
+        hasErrorTypes: null,
+        typeSelectedUrl: '',
+        page: 1,
+        pageSize: 16
     },
     reducers: {
+        setAllPokemons: ( state, action ) => {
+            state.allPokemons = action.payload
+        },
+        setPokemonsByType: ( state, action ) => {
+            state.pokemonsByType = action.payload
+        },
         setPokemons: ( state, action ) => {
             state.pokemons = action.payload
         },
@@ -23,11 +35,37 @@ export const pokemonSlice = createSlice({
         },
         setHasError: ( state, action ) => {
             state.hasError = action.payload
+        },
+        setTypes: ( state, action ) => {
+            state.types = action.payload
+        },
+        setIsLoadingTypes: ( state, action ) => {
+            state.isLoadingTypes = action.payload
+        },
+        setHasErrorTypes: ( state, action ) => {
+            state.hasErrorTypes = action.payload
+        },
+        setTypeSelected: ( state, action ) => {
+            state.typeSelectedUrl = action.payload
+            if(action.payload === '') {
+                state.pokemonsByType = []
+            }
+            
         }
     }
 })
 
 
-export const { setPokemons, setIsLoading, setHasError } = pokemonSlice.actions
+export const {
+    setAllPokemons,
+    setPokemonsByType,
+    setPokemons, 
+    setIsLoading, 
+    setHasError, 
+    setTypes, 
+    setIsLoadingTypes, 
+    setHasErrorTypes, 
+    setTypeSelected
+} = pokemonSlice.actions
 
 export default pokemonSlice.reducer

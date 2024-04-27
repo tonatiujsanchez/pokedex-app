@@ -1,0 +1,14 @@
+.filter-select {
+    width: 100%;
+    align-self: stretch;
+    padding: 1rem;
+    border: none;
+    box-shadow: var(--shadow-primary);
+    font-size: 1.6rem;
+}
+
+@media (min-width: 768px){
+    .filter-select{
+        max-width: 40rem;
+    }
+}

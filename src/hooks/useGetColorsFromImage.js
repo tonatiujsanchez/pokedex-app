@@ -8,6 +8,9 @@ export const useGetColorsFromImage = ({ urlImage }) => {
 
     useEffect(() => {
 
+        if( !urlImage ){
+            return
+        }
         // Crea una instancia de ColorThief
         const colorThief = new ColorThief()
 

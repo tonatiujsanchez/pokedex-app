@@ -6,9 +6,14 @@ export const InputForm = ({ handleSubmit, placeholder }) => {
 
     const inputRef = useRef()
 
+    const handleFormSubmit = (event) => {
+        event.preventDefault()
+        handleSubmit( inputRef.current.value )
+    }
+
     return (
         <form
-            onSubmit={() => handleSubmit( inputRef.current.value )}
+            onSubmit={ handleFormSubmit }
             className="input-form"
         >
             <input

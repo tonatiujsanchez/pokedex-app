@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { PokemonList } from '../components'
+import { PokemonFilter, PokemonList } from '../components'
 import './styles/pokedexPage.css'
 
 export const PokedexPage = () => {
@@ -31,9 +31,7 @@ export const PokedexPage = () => {
             </div>
             <header className="pokedex-header container">
                 <p className="pokedex-header__title"><span>Bienvenido { trainer.name }</span>, aquí podrás encontrar tu pokemón favorito</p>
-                <div className="pokedex-header__form">
-                    
-                </div>
+                <PokemonFilter />
                 <PokemonList />
             </header>
           

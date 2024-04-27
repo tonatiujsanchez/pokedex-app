@@ -5,6 +5,7 @@
 	/*========== Colores ==========*/
 	--body-color: #F8FAFC;
 	--content-color: #FFF;
+	--card-color: #FFF;
 	--title-color: rgba(254, 25, 54, 1);
 	--text-color: rgba(48, 47, 47, 1);
 	--text-color-light: rgba(159, 159, 159, 1);
@@ -30,11 +31,8 @@ html {
 body.dark {
 	--body-color: #18181B;
 	--content-color: #242424;
-	
-
-	--border-primary: 0.1rem solid var(--black-primary-color);
-	--shadow-primary: 0 0.5rem 1.4rem var(--black-primary-color);
-	--shadow-primary-top: 0 -0.1rem 0.6rem var(--black-primary-color); 
+	--text-color: rgb(231, 231, 231);
+	--card-color: #474747;
 
 }
 

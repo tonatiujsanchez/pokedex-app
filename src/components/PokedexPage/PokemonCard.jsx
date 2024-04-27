@@ -1,12 +1,30 @@
 import PropTypes from 'prop-types'
-import { useGetColorsFromImage } from '../../hooks'
+import { useGetColorsFromImage, useGetPokemon } from '../../hooks'
 import './styles/pokemonCard.css'
 
-export const PokemonCard = ({ pokemon }) => {
+export const PokemonCard = ({ pokemonUrl }) => {
     
-    const { colors } = useGetColorsFromImage({ urlImage: pokemon.sprites.other?.['official-artwork'].front_default })
+   
+    const { pokemon, pokemonIsLoading, hasError } = useGetPokemon({ pokemonUrl })
+    
 
-    const backgroundGradient = `linear-gradient( 0deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 25%, rgb(${ colors[0]?.join(', ') }) 25%, rgb(${ colors[4]?.join(', ') }) 100%)`
+    const { colors } = useGetColorsFromImage({ urlImage: pokemon?.sprites.other?.['official-artwork'].front_default })
+
+
+
+
+    if( colors.length === 0 || pokemonIsLoading ){
+        return (
+            <p>Cargando...</p>
+        )
+    }
+
+
+    if( hasError ){
+        return (
+            <h2>hasError</h2>
+        )
+    }
 
     const hp = pokemon.stats.find(stat => stat.stat.name === 'hp').base_stat
     const attack = pokemon.stats.find(stat => stat.stat.name === 'attack').base_stat
@@ -14,13 +32,9 @@ export const PokemonCard = ({ pokemon }) => {
     const speed = pokemon.stats.find(stat => stat.stat.name === 'speed').base_stat
 
 
-    if( colors.length === 0 ){
-        return (
-            <p>Cargando...</p>
-        )
-    }
+    const backgroundGradient = `linear-gradient( 0deg, var(--card-color) 0%, var(--card-color) 25%, rgb(${ colors[0]?.join(', ') }) 25%, rgb(${ colors[4]?.join(', ') }) 100%)`
 
-    console.log(pokemon)
+
     return (
         <article
             className="pokemon"
@@ -38,7 +52,6 @@ export const PokemonCard = ({ pokemon }) => {
                     >
                         <figure className="pokemon__figure">
                             <img 
-                                // src={pokemon.sprites.other?.showdown.front_default} 
                                 src={pokemon.sprites.other?.['official-artwork'].front_default} 
                                 alt={ pokemon.name } 
                                 title={ pokemon.name }
@@ -101,5 +114,5 @@ export const PokemonCard = ({ pokemon }) => {
 }
 
 PokemonCard.propTypes = {
-    pokemon: PropTypes.object.isRequired
+    pokemonUrl: PropTypes.string.isRequired
 }
