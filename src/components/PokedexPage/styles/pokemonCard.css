@@ -4,6 +4,7 @@
     max-width: 26rem;
     width: 100%;
     margin-inline: auto;
+    cursor: pointer;
 }
 
 .pokemon__content {
@@ -13,7 +14,6 @@
 /* HEADER */
 .pokemon__figure-content {
     padding-block-start: 2rem;
-    
 }
 
 .pokemon__header {
@@ -23,7 +23,13 @@
 
 .pokemon__figure{
     max-width: 14rem;
+    aspect-ratio: 1;
     margin-inline: auto;
+    transition: all 0.4s;
+}
+
+.pokemon:hover .pokemon__figure {
+    scale: 0.9;
 }
 
 .pokemon__figure img{

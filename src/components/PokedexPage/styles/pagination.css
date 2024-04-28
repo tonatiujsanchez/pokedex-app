@@ -1,0 +1,43 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-block-start: 1rem;
+    margin-block-end: 3rem;
+}
+
+.pagination a {
+    display: block;
+    width: 3.8rem;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 0.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-block-end: 0.2rem solid transparent;
+    display: grid;
+    place-content: center;
+}
+
+.pagination a:hover {
+    border-block-end-color: var(--red-color);
+    background: var(--content-color);
+    box-shadow: var(--shadow-primary)
+}
+
+.pagination a.pagination__button--current {
+    background-color: var(--red-color);
+    color: var(--content-color);
+}
+
+.pagination a.pagination__button--current:hover {
+    background-color: var(--red-color);
+    color: var(--content-color);
+}
+
+@media (min-width: 768px){
+    .pagination a {
+        font-size: 2rem;
+        width: 5rem;
+    }
+}

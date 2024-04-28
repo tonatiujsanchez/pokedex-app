@@ -1,17 +1,15 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useGetColorsFromImage, useGetPokemon } from '../../hooks'
 import './styles/pokemonCard.css'
 
 export const PokemonCard = ({ pokemonUrl }) => {
     
-   
+   const [isHovered, setIsHovered] = useState(false)
     const { pokemon, pokemonIsLoading, hasError } = useGetPokemon({ pokemonUrl })
-    
 
     const { colors } = useGetColorsFromImage({ urlImage: pokemon?.sprites.other?.['official-artwork'].front_default })
-
-
-
+    
 
     if( colors.length === 0 || pokemonIsLoading ){
         return (
@@ -38,6 +36,8 @@ export const PokemonCard = ({ pokemonUrl }) => {
     return (
         <article
             className="pokemon"
+            onMouseEnter={ ()=> setIsHovered(true) }
+            onMouseLeave={ ()=> setIsHovered(false) }
             style={{
                 backgroundColor: `rgba(${ colors[0]?.join(', ') })`,
             }}
@@ -52,7 +52,11 @@ export const PokemonCard = ({ pokemonUrl }) => {
                     >
                         <figure className="pokemon__figure">
                             <img 
-                                src={pokemon.sprites.other?.['official-artwork'].front_default} 
+                                src={
+                                    isHovered 
+                                        ?pokemon.sprites.other?.showdown.front_default
+                                        :pokemon.sprites.other?.['official-artwork'].front_default
+                                } 
                                 alt={ pokemon.name } 
                                 title={ pokemon.name }
                             />

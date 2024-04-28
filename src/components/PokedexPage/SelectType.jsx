@@ -5,7 +5,7 @@ import { usePokemons } from '../../hooks'
 
 export const SelectType = () => {
 
-    const {getTypes, types, isLoadingTypes, hasErrorTypes, typeSelectedUrl, onChangeType } = usePokemons()
+    const {getTypes, types, isLoadingTypes, hasErrorTypes, typeSelectedUrl, onChangeType, onChangePage } = usePokemons()
 
     useEffect(()=>{
         getTypes()
@@ -23,10 +23,15 @@ export const SelectType = () => {
         )
     }
 
+    const handleChangeType = ( typeUrl ) => {
+        onChangePage(1)
+        onChangeType(typeUrl)
+    }
+
     return (
         <select
             className="filter-select"
-            onChange={({ target }) => onChangeType(target.value) }
+            onChange={({ target }) => handleChangeType(target.value) }
             value={ typeSelectedUrl }
         >
             <option value="">Todos los pokemones</option>

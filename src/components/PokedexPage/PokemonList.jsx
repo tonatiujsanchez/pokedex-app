@@ -1,10 +1,11 @@
 import { usePokemons } from '../../hooks'
+import { Pagination } from './Pagination'
 import { PokemonCard } from './PokemonCard'
 import './styles/pokemonList.css'
 
 export const PokemonList = () => {
 
-    const { isLoading, hasError, pokemons } = usePokemons()
+    const { isLoading, hasError, pokemons, onChangePage } = usePokemons()
 
     if( isLoading ){
         return (
@@ -19,15 +20,27 @@ export const PokemonList = () => {
     }
 
     return (
-        <section className="pokemon-list">
+        <>
+            <section className="pokemon-list">
+                {
+                    pokemons.data.map( pokemon =>(
+                        <PokemonCard
+                            key={ pokemon.url }
+                            pokemonUrl={ pokemon.url }
+                        />
+                    ))
+                }
+            </section>
             {
-                pokemons.data.map( pokemon =>(
-                    <PokemonCard
-                        key={ pokemon.url }
-                        pokemonUrl={ pokemon.url }
+                pokemons.totalPages > 1 && (
+
+                    <Pagination
+                        totalPages={ pokemons.totalPages }
+                        currentPage={ pokemons.currentPage }
+                        handlePage={ onChangePage }
                     />
-                ))
+                )
             }
-        </section>
+        </>
     )
 }

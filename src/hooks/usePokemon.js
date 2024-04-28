@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType } from '../store/slices/pokemon.slice'
+import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType, setPage } from '../store/slices/pokemon.slice'
 import { useEffect } from 'react'
 import { getPokemonsPerPage } from '../services'
 
@@ -25,7 +25,6 @@ export const usePokemons = () => {
         getPokemons()
     },[])
 
-
     useEffect(()=>{
         if( typeSelectedUrl ){
             getPokemonsByType()
@@ -41,14 +40,14 @@ export const usePokemons = () => {
                 count      : pokemonsByType.length,
                 currentPage: page,
                 totalPages : Math.ceil( pokemonsByType.length / Number(pageSize) ),
-                data: getPokemonsPerPage( pokemonsByType )
+                data: getPokemonsPerPage( pokemonsByType, page, pageSize )
             }
         }else {
             pokemons = {
                 count      : allPokemons.length,
                 currentPage: page,
                 totalPages : Math.ceil( allPokemons.length / Number(pageSize) ),
-                data: getPokemonsPerPage( allPokemons )
+                data: getPokemonsPerPage( allPokemons, page, pageSize )
             }
         }
 
@@ -106,6 +105,10 @@ export const usePokemons = () => {
         dispath( setTypeSelected(typeUrl) )
     }
 
+    const onChangePage = ( pageSelected ) => {
+        dispath( setPage(pageSelected) )
+    }
+
 
     return { 
         pokemons,
@@ -117,5 +120,6 @@ export const usePokemons = () => {
         hasErrorTypes, 
         typeSelectedUrl, 
         onChangeType,
+        onChangePage,
     }
 }
