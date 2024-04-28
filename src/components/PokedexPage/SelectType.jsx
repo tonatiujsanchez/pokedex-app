@@ -13,7 +13,7 @@ export const SelectType = () => {
 
     if( isLoadingTypes ){
         return (
-            <p>Cargando typos...</p>
+            <div className="filter-select__skeleton"></div>
         )
     }
 

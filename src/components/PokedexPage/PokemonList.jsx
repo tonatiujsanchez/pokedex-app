@@ -1,6 +1,8 @@
 import { usePokemons } from '../../hooks'
 import { Pagination } from './Pagination'
 import { PokemonCard } from './PokemonCard'
+import { PokeLoading } from '../Shared/PokeLoading'
+
 import './styles/pokemonList.css'
 
 export const PokemonList = () => {
@@ -9,7 +11,9 @@ export const PokemonList = () => {
 
     if( isLoading ){
         return (
-            <h2>Cargando...</h2>
+            <div className="pokemon-list__loader">
+                <PokeLoading />
+            </div>
         )
     }
 

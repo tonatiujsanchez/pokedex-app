@@ -9,6 +9,7 @@
 
 .pokemon__content {
     background-color: var(--card-color);
+    min-height: 100%;
 }
 
 /* HEADER */
@@ -18,7 +19,7 @@
 
 .pokemon__header {
     padding-block-end: 1rem;
-    border-block-end: 0.1rem solid var(--text-color-light);
+    border-block-end: var(--border-light)
 }
 
 .pokemon__figure{
@@ -77,4 +78,13 @@
 
 .pokemon__skill {
     font-weight: 600;
+}
+
+.pokemon-card__skeleton {
+    max-width: 26rem;
+    width: 100%;
+    min-height: 37.8rem;
+    border-radius: 0.8rem;
+    margin-inline: auto;
+    animation: skeleton-loading 0.5s linear infinite alternate;
 }

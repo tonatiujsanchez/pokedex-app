@@ -1,19 +1,22 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useGetColorsFromImage, useGetPokemon } from '../../hooks'
 import './styles/pokemonCard.css'
 
 export const PokemonCard = ({ pokemonUrl }) => {
     
-   const [isHovered, setIsHovered] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
     const { pokemon, pokemonIsLoading, hasError } = useGetPokemon({ pokemonUrl })
+
+    const navigate = useNavigate() 
 
     const { colors } = useGetColorsFromImage({ urlImage: pokemon?.sprites.other?.['official-artwork'].front_default })
     
 
     if( colors.length === 0 || pokemonIsLoading ){
         return (
-            <p>Cargando...</p>
+            <div className="pokemon-card__skeleton"></div>
         )
     }
 
@@ -29,13 +32,17 @@ export const PokemonCard = ({ pokemonUrl }) => {
     const defense = pokemon.stats.find(stat => stat.stat.name === 'defense').base_stat
     const speed = pokemon.stats.find(stat => stat.stat.name === 'speed').base_stat
 
-
     const backgroundGradient = `linear-gradient( 0deg, var(--card-color) 0%, var(--card-color) 25%, rgb(${ colors[0]?.join(', ') }) 25%, rgb(${ colors[4]?.join(', ') }) 100%)`
 
+
+    const handleClickPokemon = () => {
+        navigate(`/pokedex/${pokemon.id}`)
+    }
 
     return (
         <article
             className="pokemon"
+            onClick={ handleClickPokemon }
             onMouseEnter={ ()=> setIsHovered(true) }
             onMouseLeave={ ()=> setIsHovered(false) }
             style={{
@@ -54,7 +61,7 @@ export const PokemonCard = ({ pokemonUrl }) => {
                             <img 
                                 src={
                                     isHovered 
-                                        ?pokemon.sprites.other?.showdown.front_default
+                                        ?( pokemon.sprites.other?.showdown.front_default ?? pokemon.sprites.other?.['official-artwork'].front_default )
                                         :pokemon.sprites.other?.['official-artwork'].front_default
                                 } 
                                 alt={ pokemon.name } 

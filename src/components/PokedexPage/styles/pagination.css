@@ -37,7 +37,7 @@
 
 @media (min-width: 768px){
     .pagination a {
-        font-size: 2rem;
-        width: 5rem;
+        font-size: 1.8rem;
+        width: 4.5rem;
     }
 }
