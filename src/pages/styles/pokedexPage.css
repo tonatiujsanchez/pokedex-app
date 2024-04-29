@@ -1,31 +1,3 @@
-.pokedex__head-red {
-    height: 4rem;
-    background-color: var(--red-color);
-}
-
-.pokedex__head-black {
-    height: 2.5rem;
-    background-color: var(--black-color);
-}
-
-.pokedex__container {
-    position: relative;
-}
-
-.pokedex__figure-title {
-    position: absolute;
-    inset-block-end: 2rem;
-    inset-inline-start: 1rem;
-    width: 16rem;
-}
-
-.pokedex__head-figure {
-    position: absolute;
-    inset-inline-end: 1rem;
-    inset-block-start: -3.5rem;
-    max-width: 4rem;
-}
-
 /* ===== ===== ===== HEADER ===== ===== =====  */
 .pokedex-header {
     padding-block: 1rem;

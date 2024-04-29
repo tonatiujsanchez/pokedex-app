@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useGetColorsFromImage, useGetPokemon } from '../../hooks'
+import { typesEs } from '../../constants'
+
 import './styles/pokemonCard.css'
 
 export const PokemonCard = ({ pokemonUrl }) => {
@@ -11,15 +13,14 @@ export const PokemonCard = ({ pokemonUrl }) => {
 
     const navigate = useNavigate() 
 
-    const { colors } = useGetColorsFromImage({ urlImage: pokemon?.sprites.other?.['official-artwork'].front_default })
-    
+    const urlImage = pokemon?.sprites.other?.['official-artwork'].front_default
+    const { colors } = useGetColorsFromImage({ urlImage, isLoading: pokemonIsLoading })
 
     if( colors.length === 0 || pokemonIsLoading ){
         return (
             <div className="pokemon-card__skeleton"></div>
         )
     }
-
 
     if( hasError ){
         return (
@@ -61,8 +62,8 @@ export const PokemonCard = ({ pokemonUrl }) => {
                             <img 
                                 src={
                                     isHovered 
-                                        ?( pokemon.sprites.other?.showdown.front_default ?? pokemon.sprites.other?.['official-artwork'].front_default )
-                                        :pokemon.sprites.other?.['official-artwork'].front_default
+                                        ? ( pokemon.sprites.other?.showdown.front_default ?? urlImage ?? '/pokeball.webp' )
+                                        : urlImage ?? '/pokeball.webp'
                                 } 
                                 alt={ pokemon.name } 
                                 title={ pokemon.name }
@@ -74,7 +75,7 @@ export const PokemonCard = ({ pokemonUrl }) => {
                         <ul className="pokemon__types-list">
                             {
                                 pokemon.types.map( type => (
-                                    <li key={ type.type.url }>{ type.type.name }</li>
+                                    <li key={ type.type.url }>{ typesEs[type.type.name] }</li>
                                 ))
                             }
                         </ul>

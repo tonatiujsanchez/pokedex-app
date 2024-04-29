@@ -9,17 +9,18 @@
 	--title-color: rgba(254, 25, 54, 1);
 	--text-color: rgba(48, 47, 47, 1);
 	--text-color-light: rgba(159, 159, 159, 1);
-
+	--boder-primary-color: rgb(223, 223, 223);
 
 	--black-color: #000;
 	--red-color: rgba(221, 26, 26, 1);
 
 	/*========== Sombras ==========*/
-	--shadow-primary: 0 0.3rem 0.3rem rgb(0, 0, 0, 0.1); 
+	--shadow-primary: 0 0.3rem 0.3rem rgb(0, 0, 0, 0.1);
+	--shadow-primary-large: 0 0rem 0.8rem rgb(0, 0, 0, 0.2);
 
 	/*========== Bordes ==========*/
 	--border-light: 0.1rem solid rgb(240, 240, 240, 0.9);
-
+	--border-primary: 0.1rem solid var(--boder-primary-color);
 }
 
 html {

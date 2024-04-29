@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const useGetPokemon = ({ pokemonUrl }) => {
     
-    const [pokemonIsLoading, setPokemonIsLoading] = useState(false)
+    const [pokemonIsLoading, setPokemonIsLoading] = useState(true)
     const [hasError, setHasError] = useState(null)
     const [pokemon, setPokemon] = useState()
 

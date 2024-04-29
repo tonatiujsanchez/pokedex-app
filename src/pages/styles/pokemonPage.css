@@ -1,0 +1,280 @@
+.poke {
+    margin-block-start: 5rem;
+}
+
+.poke__content {
+    border: 0.5rem solid var(--content-color);
+    box-shadow: var(--shadow-primary-large);
+    border-radius: 0.5rem;
+    margin-block-end: 5rem;
+    background: var(--content-color);
+}
+
+.poke__figure-content {
+    position: relative;
+    width: 100%;
+    height: 12rem;
+}
+
+.poke__figure {
+    position: absolute;
+    max-width: 16rem;
+    inset-inline-start: 50%;
+    inset-block-start: -35%;
+    transform: translateX(-50%)
+}
+
+.poke__info {
+    padding: 4rem 1rem;
+}
+
+.poke__id {
+    font-weight: 600;
+    font-size: 2.4rem;
+    border-radius: 0.2rem;
+    border: var(--border-primary);
+    max-width: 7rem;
+    padding-block: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-end: 2rem;
+    margin-inline: auto;
+}
+
+.poke__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-end: 2rem;
+    text-transform: capitalize;
+    gap: 2rem;
+    color: var(--text-color);
+    font-size: 2.8rem;
+}
+
+.poke__name::before {
+    content: '';
+    flex: 1;
+    height: 0.1rem;
+    background-color: var(--boder-primary-color);
+}
+.poke__name::after {
+    content: '';
+    flex: 1;
+    height: 0.1rem;
+    background-color: var(--boder-primary-color);
+}
+
+/* DIMENSIONS */
+.poke__dimensions {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-block-end: 3rem;
+}
+
+.poke__dimension {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.poke__dimension-label {
+    font-size: 1.2rem;
+}
+
+.poke__dimension-value {
+    font-weight: 600;
+}
+
+/* TYPES - SKILLS */
+.poke__types-skills {
+    display: grid;
+    column-gap: 3rem;
+    row-gap: 4rem;
+    margin-block-end: 5rem;
+}
+
+.poke__types-skills-content {
+    text-align: center;
+}
+
+.poke__types-skills-title {
+    display: block;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-block-end: 1rem;
+}
+
+.poke__types-skills-items {
+    display: flex;
+    gap: 1rem;
+}
+
+.poke__types-skills-item {
+    flex: 1;
+    max-width: 60%;
+    margin-inline: auto;
+    padding: 1rem;
+    border-radius: 0.2rem;
+}
+
+.poke__types-skills-item--type {
+    color: white;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.poke__types-skills-item--skill {
+    border: var(--border-primary);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+
+/* STATS */
+.poke__stats {
+    padding-block-end: 2rem;
+}
+
+.poke__stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 2rem;
+}
+
+.poke__stats-title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 2.5rem;
+    color: var(--text-color);
+    font-size: 2.4rem;
+}
+
+.poke__stats-title::after {
+    content: '';
+    flex: 1;
+    height: 0.1rem;
+    background-color: var(--boder-primary-color);
+}
+
+.poke__stats-figure {
+    max-width: 6rem;
+}
+
+.poke__stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.poke__stats-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.poke__stats-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.poke__stats-label {
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.poke__stats-value {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.poke__stats-bar {
+    width: 100%;
+    height: 2.5rem;
+    background-color: var(--boder-primary-color);
+}
+
+.poke__stats-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, rgba(252, 214, 118, 1), rgba(230, 144, 30, 1));
+}
+
+/* MOVEMENTS */
+.movements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.movement {
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    background-color: var(--boder-primary-color);
+}
+
+@media (min-width: 768px){
+    .poke {
+        margin-block-start: 14rem;
+        margin-block-end: 12rem;
+    }    
+
+    .poke__figure-content {
+        height: 18.5rem;
+    }
+
+    .poke__info {
+        padding: 4rem 10rem;
+    }
+
+    .poke__figure {
+        max-width: 32rem;
+        inset-block-start: -75%;
+    }
+
+    .poke__id {
+        font-size: 3.5rem;
+    }
+
+    /* NAME */
+    .poke__name {
+        font-size: 4.5rem;
+    }
+
+    /* TYPES - SKILLS */
+    .poke__types-skills {
+        grid-template-columns: repeat(2, 1fr);
+        margin-block-end: 7rem;
+    }
+
+    .poke__types-skills-title {
+        margin-block-end: 2.5rem;
+        font-size: 3rem;
+    }
+
+    .poke__types-skills-items {
+        gap: 3rem;
+    }
+
+    /* DIMENSIONS */
+    .poke__dimension-label {
+        font-size: 1.6rem;
+    }
+
+    .poke__dimension-value {
+        font-size: 2.5rem;
+    }
+
+    .poke__stats-title {
+        font-size: 4rem;
+    }    
+
+    .poke__stats-figure {
+        max-width: 9rem;
+    }    
+}

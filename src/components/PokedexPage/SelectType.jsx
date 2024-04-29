@@ -2,6 +2,7 @@
 import { useEffect } from 'react'
 import './styles/SelectType.css'
 import { usePokemons } from '../../hooks'
+import { typesEs } from '../../constants'
 
 export const SelectType = () => {
 
@@ -37,7 +38,7 @@ export const SelectType = () => {
             <option value="">Todos los pokemones</option>
             {
                 types.map( type => (
-                    <option key={ type.url } value={ type.url }>{ type.name }</option>
+                    <option key={ type.url } value={ type.url }>{ typesEs[type.name] }</option>
                 ))
             }
         </select>
