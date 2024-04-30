@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { HomePage, PokedexPage, PokemonPage, PrivateRoutes } from './pages'
 import './App.css'
 
@@ -13,6 +13,7 @@ function App() {
                     <Route path='/pokedex' element={<PokedexPage />} />
                     <Route path='/pokedex/:id' element={<PokemonPage />} />
                 </Route> 
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </>
     )
