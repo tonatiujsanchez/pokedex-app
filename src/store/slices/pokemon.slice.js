@@ -18,7 +18,8 @@ export const pokemonSlice = createSlice({
         hasErrorTypes: null,
         typeSelectedUrl: '',
         page: 1,
-        pageSize: 16
+        pageSize: 16,
+        searchTerm: '',
     },
     reducers: {
         setAllPokemons: ( state, action ) => {
@@ -50,13 +51,15 @@ export const pokemonSlice = createSlice({
             if(action.payload === '') {
                 state.pokemonsByType = []
             }
-            
         },
         setPage: ( state, action ) => {
             state.page = action.payload
         },
         setPageSize: ( state, action ) => {
             state.pageSize = action.payload
+        },
+        setSearchTerm: ( state, action ) => {
+            state.searchTerm = action.payload
         }
     }
 })
@@ -74,6 +77,7 @@ export const {
     setTypeSelected,
     setPage,
     setPageSize,
+    setSearchTerm,
 } = pokemonSlice.actions
 
 export default pokemonSlice.reducer

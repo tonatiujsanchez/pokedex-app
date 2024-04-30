@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType, setPage, setPageSize } from '../store/slices/pokemon.slice'
+import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType, setPage, setPageSize, setSearchTerm } from '../store/slices/pokemon.slice'
 import { useEffect } from 'react'
 import { getPokemonsPerPage } from '../services'
 
@@ -19,6 +19,7 @@ export const usePokemons = () => {
         typeSelectedUrl,
         page,
         pageSize,
+        searchTerm,
     } = useSelector(( store => store.pokemon ))
 
     useEffect(() => {
@@ -36,24 +37,33 @@ export const usePokemons = () => {
 
         let pokemons = {}
         if( pokemonsByType.length > 0 ){
+            // const pokes = getPokemonsPerPage( pokemonsByType, page, pageSize )
+            const pokesFilterByTerm = pokemonsByType.filter( pokemon => pokemon.name.toLowerCase().includes( searchTerm.toLowerCase() ) )
+            const data = searchTerm.trim().length > 0 ? pokesFilterByTerm : pokesFilterByTerm
             pokemons = {
-                count      : pokemonsByType.length,
+                count      : data.length,
                 currentPage: page,
-                totalPages : Math.ceil( pokemonsByType.length / Number(pageSize) ),
-                data: getPokemonsPerPage( pokemonsByType, page, pageSize )
+                totalPages : Math.ceil( data.length / Number(pageSize) ),
+                data       : getPokemonsPerPage( data, Number(page), Number(pageSize) )
             }
         }else {
+            // const pokes = getPokemonsPerPage( allPokemons, page, pageSize )
+            const pokesFilterByTerm = allPokemons.filter( pokemon => pokemon.name.toLowerCase().includes( searchTerm.toLowerCase() ) )
+            const data = searchTerm.trim().length > 0 ? pokesFilterByTerm : allPokemons
+
             pokemons = {
-                count      : allPokemons.length,
+                count      : data.length,
                 currentPage: page,
-                totalPages : Math.ceil( allPokemons.length / Number(pageSize) ),
-                data: getPokemonsPerPage( allPokemons, page, pageSize )
+                totalPages : Math.ceil( data.length / Number(pageSize) ),
+                data       : getPokemonsPerPage( data, Number(page), Number(pageSize) )
             }
         }
 
         dispath( setPokemons(pokemons ))
 
-    },[ allPokemons, pokemonsByType, page, pageSize])
+    },[ allPokemons, pokemonsByType, page, pageSize, searchTerm])
+
+
 
     const getPokemons = async() => {
         dispath( setIsLoading(true) )
@@ -113,6 +123,10 @@ export const usePokemons = () => {
         dispath( setPageSize(pageSizeSelected) )
     }
 
+    const onChangeSearchTerm = ( term ) => {
+        dispath( setSearchTerm(term) )
+    }
+
 
     return { 
         pokemons,
@@ -127,5 +141,7 @@ export const usePokemons = () => {
         onChangePage,
         pageSize,
         onChangePageSize,
+        searchTerm,
+        onChangeSearchTerm
     }
 }

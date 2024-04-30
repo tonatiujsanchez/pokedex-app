@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useRef } from 'react'
 import './styles/inputForm.css'
 
-export const InputForm = ({ handleSubmit, placeholder }) => {
+export const InputForm = ({ handleSubmit, textButton='Comenzar', placeholder }) => {
 
     const inputRef = useRef()
 
@@ -26,7 +26,7 @@ export const InputForm = ({ handleSubmit, placeholder }) => {
                 type="submit"
                 className="input-form__submit"
             >
-                Comenzar
+                { textButton }
             </button>
         </form>
     )
@@ -34,5 +34,6 @@ export const InputForm = ({ handleSubmit, placeholder }) => {
 
 InputForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    textButton: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
 }
