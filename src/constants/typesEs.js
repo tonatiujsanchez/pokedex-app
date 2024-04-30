@@ -5,7 +5,7 @@ export const typesEs = {
     poison  : 'Veneno',
     ground  : 'Tierra',
     rock    : 'Roca',
-    bug     : 'Bicho',
+    bug     : 'Insecto',
     ghost   : 'Fantasma',
     steel   : 'Acero',
     fire    : 'Fuego',

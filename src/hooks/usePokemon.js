@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType, setPage } from '../store/slices/pokemon.slice'
+import { setAllPokemons, setPokemons, setHasError, setIsLoading, setTypes, setIsLoadingTypes, setHasErrorTypes, setTypeSelected, setPokemonsByType, setPage, setPageSize } from '../store/slices/pokemon.slice'
 import { useEffect } from 'react'
 import { getPokemonsPerPage } from '../services'
 
@@ -109,6 +109,10 @@ export const usePokemons = () => {
         dispath( setPage(pageSelected) )
     }
 
+    const onChangePageSize = ( pageSizeSelected ) => {
+        dispath( setPageSize(pageSizeSelected) )
+    }
+
 
     return { 
         pokemons,
@@ -121,5 +125,7 @@ export const usePokemons = () => {
         typeSelectedUrl, 
         onChangeType,
         onChangePage,
+        pageSize,
+        onChangePageSize,
     }
 }

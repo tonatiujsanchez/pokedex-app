@@ -1,4 +1,5 @@
 import { InputForm } from '../Shared/InputForm'
+import { SelectPageSize } from './SelectPageSize'
 import { SelectType } from './SelectType'
 import './styles/pokemonFilter.css'
 
@@ -19,6 +20,7 @@ export const PokemonFilter = () => {
                 handleSubmit={ handleSearchPokemon }
             />
             <SelectType />
+            <SelectPageSize />
         </section>
     )
 }

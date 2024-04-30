@@ -234,7 +234,7 @@
 
     .poke__figure {
         max-width: 32rem;
-        inset-block-start: -75%;
+        inset-block-start: -70%;
     }
 
     .poke__id {
@@ -276,5 +276,9 @@
 
     .poke__stats-figure {
         max-width: 9rem;
-    }    
+    }
+
+    .movements {
+        padding-block-end: 5rem;
+    }
 }

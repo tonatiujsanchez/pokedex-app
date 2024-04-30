@@ -54,6 +54,9 @@ export const pokemonSlice = createSlice({
         },
         setPage: ( state, action ) => {
             state.page = action.payload
+        },
+        setPageSize: ( state, action ) => {
+            state.pageSize = action.payload
         }
     }
 })
@@ -70,6 +73,7 @@ export const {
     setHasErrorTypes, 
     setTypeSelected,
     setPage,
+    setPageSize,
 } = pokemonSlice.actions
 
 export default pokemonSlice.reducer

@@ -1,3 +1,9 @@
+.pokedex__head {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 10;
+}
+
 .pokedex__head-red {
     height: 4rem;
     background-color: var(--red-color);
@@ -27,6 +33,10 @@
 }
 
 @media (min-width: 768px){
+    .pokedex__head {
+        position: unset;
+    }
+
     .pokedex__head-figure {
         max-width: 10rem;
     }

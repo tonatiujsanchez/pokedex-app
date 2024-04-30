@@ -1,0 +1,22 @@
+.select-count {
+    width: 100%;
+    align-self: stretch;
+    padding: 1rem;
+    border: none;
+    box-shadow: var(--shadow-primary);
+    font-size: 1.6rem;
+    height: 4.8rem;
+}
+
+@media (min-width: 768px){
+    .select-count {
+        max-width: 8rem;
+    }
+}
+
+@media (min-width: 960px){
+    .select-count {
+        max-width: 10rem;
+    }
+}
+
