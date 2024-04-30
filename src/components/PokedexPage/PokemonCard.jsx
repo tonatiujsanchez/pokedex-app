@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { useGetColorsFromImage, useGetPokemon } from '../../hooks'
 import { typesEs } from '../../constants'
-
 import './styles/pokemonCard.css'
 
-export const PokemonCard = ({ pokemonUrl }) => {
+export const PokemonCard = ({ pokemonUrl, onChangeHasError }) => {
     
     const [isHovered, setIsHovered] = useState(false)
     const { pokemon, pokemonIsLoading, hasError } = useGetPokemon({ pokemonUrl })
@@ -16,15 +15,22 @@ export const PokemonCard = ({ pokemonUrl }) => {
     const urlImage = pokemon?.sprites.other?.['official-artwork'].front_default
     const { colors } = useGetColorsFromImage({ urlImage, isLoading: pokemonIsLoading })
 
-    if( colors.length === 0 || pokemonIsLoading ){
+    if( pokemonIsLoading ){
         return (
             <div className="pokemon-card__skeleton"></div>
         )
     }
 
     if( hasError ){
+        onChangeHasError(hasError)
         return (
             <h2>hasError</h2>
+        )
+    }
+
+    if( colors.length === 0 ){
+        return (
+            <div className="pokemon-card__skeleton"></div>
         )
     }
 
@@ -126,5 +132,6 @@ export const PokemonCard = ({ pokemonUrl }) => {
 }
 
 PokemonCard.propTypes = {
-    pokemonUrl: PropTypes.string.isRequired
+    pokemonUrl: PropTypes.string.isRequired,
+    onChangeHasError: PropTypes.func.isRequired
 }

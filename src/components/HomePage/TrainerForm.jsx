@@ -22,6 +22,7 @@ export const TrainerForm = () => {
         <div className="trainer-form">
             <InputForm
                 handleSubmit= { handleSubmit }
+                textButton="Comenzar"
                 placeholder="Tu nombre..."
             />
         </div>

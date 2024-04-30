@@ -92,6 +92,7 @@ export const usePokemons = () => {
             dispath( setHasError(null) )
 
         } catch (error) {
+            console.log(error)
             dispath( setHasError(error.response.data) )  
         }finally {
             dispath( setIsLoading( false ) )
@@ -127,6 +128,10 @@ export const usePokemons = () => {
         dispath( setSearchTerm(term) )
     }
 
+    const onChangeHasError = ( error ) => {
+        dispath( setHasError(error) ) 
+    }
+
 
     return { 
         pokemons,
@@ -142,6 +147,7 @@ export const usePokemons = () => {
         pageSize,
         onChangePageSize,
         searchTerm,
-        onChangeSearchTerm
+        onChangeSearchTerm,
+        onChangeHasError
     }
 }

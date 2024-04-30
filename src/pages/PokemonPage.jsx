@@ -124,8 +124,8 @@ export const PokemonPage = () => {
                                         </div>
                                         <div className="poke__stats-bar">
                                             <div
-                                                style={{ width: `${ ( stat.base_stat * 100 ) / 150 }%` }} 
                                                 className="poke__stats-bar-fill"
+                                                style={{ width: `${ ( stat.base_stat * 100 ) / 150 }%` }} 
                                             >
                                             </div>
                                         </div>

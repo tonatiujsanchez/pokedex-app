@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useRef } from 'react'
 import './styles/inputForm.css'
 
-export const InputForm = ({ handleSubmit, textButton='Comenzar', placeholder }) => {
+export const InputForm = ({ handleSubmit, textButton, placeholder }) => {
 
     const inputRef = useRef()
 
