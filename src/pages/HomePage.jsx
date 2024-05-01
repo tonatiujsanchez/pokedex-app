@@ -1,4 +1,4 @@
-import { TrainerForm } from '../components'
+import { ThemeButton, TrainerForm } from '../components'
 import './styles/homePage.css'
 
 export const HomePage = () => {
@@ -17,6 +17,9 @@ export const HomePage = () => {
                     <p>Para poder comenzar, dame tu nombre</p>
                 </div>
                 <TrainerForm />
+                <div className="home__theme-button">
+                    <ThemeButton />
+                </div>
             </main>
             <footer className="home__footer">
                 <div className="home__footer-red"></div>

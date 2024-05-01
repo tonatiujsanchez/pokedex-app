@@ -53,6 +53,14 @@
     background-color: var(--black-color);
 }
 
+.home__theme-button {
+    position: fixed;
+    inset-block-start: 10rem;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
 @media (min-width: 768px){
     .home__footer-figure {
         max-width: 10rem;
@@ -74,5 +82,8 @@
     .home__footer-black {
         height: 5rem;
     }
-    
+
+    .home__theme-button {
+        inset-block-start: 14rem;
+    }
 }

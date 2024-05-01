@@ -10,6 +10,7 @@
 	--text-color: rgba(48, 47, 47, 1);
 	--text-color-light: rgba(159, 159, 159, 1);
 	--boder-primary-color: rgb(223, 223, 223);
+	--movement-bg-color: rgb(223, 223, 223);
 
 	--black-color: #000;
 	--red-color: rgba(221, 26, 26, 1);
@@ -40,6 +41,7 @@ body.dark {
 	--content-color: #242424;
 	--text-color: rgb(231, 231, 231);
 	--card-color: #474747;
+	--movement-bg-color: #18181B;
 
 }
 
@@ -142,7 +144,7 @@ body::-webkit-scrollbar:horizontal {
 }
   
 body::-webkit-scrollbar-thumb {
-    background-color: var(--content-color);
+    background-color: var(--red-color);
     border-radius: 2rem;
     border: 0.2rem solid var(--card-color);
 }
@@ -159,7 +161,6 @@ body::-webkit-scrollbar-track {
         background-color: hsl(200, 20%, 95%);
     }
 }
-
 
 @media (min-width: 768px){
 	.has-error {

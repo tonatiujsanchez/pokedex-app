@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 import './styles/privateRoutes.css'
+import { ThemeButton } from '../components'
 
 export const PrivateRoutes = () => {
     
@@ -31,6 +32,9 @@ export const PrivateRoutes = () => {
                     </div>
                 </div>
                 <Outlet />
+                <div className="pokedex__theme-button">
+                    <ThemeButton />
+                </div>
             </>
         )
     }

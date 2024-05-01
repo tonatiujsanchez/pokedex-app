@@ -7,7 +7,7 @@
     box-shadow: var(--shadow-primary-large);
     border-radius: 0.5rem;
     margin-block-end: 5rem;
-    background: var(--content-color);
+    background: var(--card-color);
 }
 
 .poke__figure-content {
@@ -216,7 +216,8 @@
 .movement {
     padding: 1rem 2rem;
     border-radius: 5rem;
-    background-color: var(--boder-primary-color);
+    background-color: var(--movement-bg-color);
+    color: var(--text-color);
 }
 
 @media (min-width: 768px){

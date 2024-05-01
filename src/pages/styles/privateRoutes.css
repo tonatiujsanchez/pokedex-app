@@ -32,6 +32,12 @@
     max-width: 4rem;
 }
 
+.pokedex__theme-button {
+    position: fixed;
+    inset-inline-end: 2rem;
+    inset-block-end: 6rem;
+}
+
 @media (min-width: 768px){
     .pokedex__head {
         position: unset;
@@ -57,5 +63,11 @@
     .pokedex__head-figure {
         inset-block-start: -6.7rem;
         width: 8rem;
+    }
+
+    .pokedex__theme-button {
+        position: fixed;
+        inset-inline-end: 10rem;
+        inset-block-end: 8rem;
     }
 }

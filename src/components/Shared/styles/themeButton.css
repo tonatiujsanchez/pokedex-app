@@ -1,0 +1,34 @@
+.change-theme {
+	position: relative;
+}
+
+.change-theme__light .change-theme__figure {
+	padding-block-start: 3rem;
+	padding-inline-end: 2.4rem;
+}
+
+.change-theme__figure {
+	width: 10rem;
+	position: absolute;
+	inset-block-start: -10rem;
+}
+
+.change-theme__button {
+	background-color: var(--text-color);
+	color: var(--body-color);
+	border-radius: 50%;
+	width: 4rem;
+	aspect-ratio: 1;
+}
+
+.change-theme__button svg{
+	max-width: 2rem;
+} 
+
+.change-theme__button:hover {
+    box-shadow: var(--shadow-primary);
+}
+
+.change-theme__button:active {
+	transform: scale(0.97);
+}

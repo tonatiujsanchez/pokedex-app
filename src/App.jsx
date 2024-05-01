@@ -3,8 +3,10 @@ import { HomePage, PokedexPage, PokemonPage, PrivateRoutes } from './pages'
 import './App.css'
 
 
-
 function App() {
+
+ 
+
     return (
         <>       
            <Routes>

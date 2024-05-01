@@ -9,3 +9,4 @@ export * from './PokedexPage/Pagination'
 
 export * from './Shared/InputForm'
 export * from './Shared/PokeLoading'
+export * from './Shared/ThemeButton'

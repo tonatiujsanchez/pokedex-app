@@ -49,7 +49,11 @@
 .pokemon__types-list {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+}
+
+.pokemon__types-list li:nth-of-type(2)::before {
+    content: '/';
+    padding-inline: 0.5rem;
 }
 
 .pokemon__types-title {
