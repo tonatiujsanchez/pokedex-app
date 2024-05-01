@@ -1,8 +1,8 @@
 # Pokedex  <img src="https://img.icons8.com/color/32/000000/javascript--v1.png"/><img src="https://img.icons8.com/color/32/000000/react-native.png"/>
 
-Este es un proyecto desarrollado en [React](https://reactjs.org)
+Este es un proyecto desarrollado en [React](https://reactjs.org). Es una aplicación Pokedex que utiliza Redux Toolkit para la gestión del estado global. La aplicación ofrece filtros por nombre y tipo para buscar Pokémones, junto con una función de Dark Mode para una experiencia visual adaptable.
 
-[![App de CRUD de Usuarios](/public/screen-pokedex-app.webp)](https://weatherapp-jsx.netlify.app)
+[![App de CRUD de Usuarios](/public/screen-pokedex-app.webp)](https://pokedex-jsx.netlify.app)
 
 ## Características principales
 
