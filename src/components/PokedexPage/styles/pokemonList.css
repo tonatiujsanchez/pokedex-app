@@ -2,7 +2,6 @@
     display: grid;
     column-gap: 1rem;
     row-gap: 2rem;
-    padding-block: 4rem;
 }
 
 .pokemon-list__loader {
@@ -44,6 +43,7 @@
 @media (min-width: 768px){
     .pokemon-list {
         grid-template-columns: repeat(3, 1fr);
+        padding-block: 4rem;
     }
 
     .pokemon-list__loader {
