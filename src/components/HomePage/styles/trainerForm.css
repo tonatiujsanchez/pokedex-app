@@ -1,5 +1,11 @@
 .trainer-form {
     display: flex;
+    flex-direction: column;
     width: 90%;
     max-width: 50rem;
+}
+
+.trainer-form__msg-error {
+    height: 2rem;
+    color: var(--title-color);
 }
