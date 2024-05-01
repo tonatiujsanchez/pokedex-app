@@ -62,7 +62,9 @@ return (
                     style={{ color: `rgb(${colors[0]})` }}
                     className="poke__id"
                 >
-                    #<span>{pokemon.id}</span>
+                    <p className="poke__id-content">
+                        #<span>{pokemon.id}</span>
+                    </p>
                 </div>
                 <h1
                     className="poke__name"

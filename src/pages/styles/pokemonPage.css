@@ -29,17 +29,19 @@
 }
 
 .poke__id {
-    font-weight: 600;
-    font-size: 2.4rem;
-    border-radius: 0.2rem;
-    border: var(--border-primary);
-    max-width: 7rem;
-    padding-block: 0.4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-block-end: 2rem;
-    margin-inline: auto;
+    font-size: 2.4rem;
+}
+
+.poke__id-content {
+    border: var(--border-primary);
+    padding-block: 0.4rem;
+    padding-inline: 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
 }
 
 .poke__name {
