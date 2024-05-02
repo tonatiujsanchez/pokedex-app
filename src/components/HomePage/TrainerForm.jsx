@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setTrainer } from '../../store/slices/trainer.slice'
 import { InputForm } from '../Shared/InputForm'
 import './styles/trainerForm.css'
@@ -8,6 +8,7 @@ import { useState } from 'react'
 export const TrainerForm = () => {
     
     const [msgError, setMsgError] = useState('')
+    const trainer = useSelector( ( state ) => state.trainer )
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -34,6 +35,7 @@ export const TrainerForm = () => {
                 handleSubmit= { handleSubmit }
                 textButton="Comenzar"
                 placeholder="Tu nombre..."
+                value={ trainer.name }
             />
             <span className="trainer-form__msg-error">{ msgError }</span>
         </div>

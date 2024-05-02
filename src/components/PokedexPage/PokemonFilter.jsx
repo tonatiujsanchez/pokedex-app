@@ -6,8 +6,8 @@ import './styles/pokemonFilter.css'
 
 export const PokemonFilter = () => {
 
-    const { onChangeSearchTerm,  onChangePage } = usePokemons()
-    
+    const { onChangeSearchTerm,  onChangePage, searchTerm } = usePokemons()
+
     const handleSearchPokemon = (value) => {
         onChangePage(1)
         onChangeSearchTerm(value.trim())
@@ -19,6 +19,7 @@ export const PokemonFilter = () => {
                 textButton="Buscar"
                 placeholder="Buscar un pokemon"
                 handleSubmit={ handleSearchPokemon }
+                value={ searchTerm }
             />
             <SelectType />
             <SelectPageSize />

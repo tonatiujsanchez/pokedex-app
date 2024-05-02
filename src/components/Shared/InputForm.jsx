@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import './styles/inputForm.css'
 
-export const InputForm = ({ handleSubmit, textButton, placeholder }) => {
+export const InputForm = ({ handleSubmit, textButton, placeholder, value='' }) => {
 
     const inputRef = useRef()
+
+    useEffect(() => {
+        if(value !== '') {
+            inputRef.current.value = value
+        }
+    },[])
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
@@ -36,4 +42,5 @@ InputForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     textButton: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired,
+    value: PropTypes.string
 }
